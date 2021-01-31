@@ -1,0 +1,84 @@
+<template>
+  <div id="app">
+    <form>
+      <input type="text" placeholder="값을 입력하세요" v-model="number">
+      
+      <ul class="main_ul" v-if="number">
+        <ul class="divide" v-for="j in list()" v-bind:key="j">
+          <li v-for="i in 9" v-bind:key="i"> {{ j+1 }} x {{ i }} = <span class="color">{{ (j+1)*i }}</span></li><span class="color"></span>
+        </ul>
+      </ul>
+      
+    </form>
+    
+  </div>
+</template>
+
+<script>
+  export default {
+    data(){
+      return{
+        number : '',
+        list: function() {
+          let list = [];
+          for(let k=0; k<parseInt(this.number); k++){
+            console.log(list)
+            list.push(k)
+          }
+        return list
+        }
+      }
+    },
+    methods: {
+      // test : function() {
+      //   this.number = parseInt(this.number)
+      // }
+    }
+  }
+</script>
+
+
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+  #wrap{
+    margin: 0 auto;
+    padding: 0;
+    
+    box-sizing: border-box;
+  }
+
+  li{
+    list-style: none;
+  }
+
+  .divide{
+    margin: 20px;
+    padding: 15px;
+
+    background-color: rgb(235, 235, 235);
+
+    width: 210px;
+    height: 180px;
+
+    border-radius: 10px;
+  }
+
+  .main_ul{
+    display: flex;
+    margin-left: 10%;
+  }
+
+  .color {
+    font-size: 17px;
+    
+    color: #42b983;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  ul{
+    padding: 0;
+  }
+</style>
